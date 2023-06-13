@@ -1,2 +1,13 @@
+
 #!/bin/bash
-echo $((' echo $PATH | grep -0 ":/" | wc -1 ' +1))
+
+count=0
+IFS=:
+
+for dir in $path; do
+  if [ -d "$dir" ]; then
+    ((count++))
+  fi
+done
+
+echo $count
